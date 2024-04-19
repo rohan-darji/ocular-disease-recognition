@@ -3,6 +3,6 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: https://github.com/rohan-darji/ocular-disease-recognition-dataset/raw/main/ocular_disease_recognition.zip
-  local_data_file: artifacts/data_ingestion/data.zip
-  unzip_dir: artifacts/data_ingestion
+  source_URL: andrewmvd/ocular-disease-recognition-odir5k
+  local_data_file: artifacts/data_ingestion/ocular-disease-recognition-odir5k.zip
+  unzip_dir: artifacts/data_ingestion/ocular-disease-recognition-dataset
