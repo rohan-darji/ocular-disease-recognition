@@ -160,5 +160,4 @@ cython_debug/
 #.idea/
 
 #database
-artifacts/
-artifacts/data_ingestion/data.zip
+artifacts/data_ingestion/*
