@@ -1,8 +1,8 @@
-from src.ocularDiseaseRecognition.constants import *
+from ocularDiseaseRecognition.constants import *
 import os
 from pathlib import Path
-from src.ocularDiseaseRecognition.utils.common import read_yaml, create_directories
-from src.ocularDiseaseRecognition.entity.config_entity import (DataIngestionConfig, 
+from ocularDiseaseRecognition.utils.common import read_yaml, create_directories
+from ocularDiseaseRecognition.entity.config_entity import (DataIngestionConfig, 
                                                                PrepareBaseModelConfig, 
                                                                PrepareCallbacksConfig, 
                                                                TrainingConfig,

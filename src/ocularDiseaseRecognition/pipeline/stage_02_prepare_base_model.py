@@ -1,6 +1,6 @@
-from src.ocularDiseaseRecognition.config.configuration import ConfigurationManager
-from src.ocularDiseaseRecognition.components.prepare_base_model import PrepareBaseModel
-from src.ocularDiseaseRecognition import logger
+from ocularDiseaseRecognition.config.configuration import ConfigurationManager
+from ocularDiseaseRecognition.components.prepare_base_model import PrepareBaseModel
+from ocularDiseaseRecognition import logger
 
 STAGE_NAME = "Prepare base model"
 
