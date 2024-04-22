@@ -1,7 +1,7 @@
 import tensorflow as tf
 from pathlib import Path
-from src.ocularDiseaseRecognition.entity.config_entity import EvaluationConfig
-from src.ocularDiseaseRecognition.utils.common import save_json
+from ocularDiseaseRecognition.entity.config_entity import EvaluationConfig
+from ocularDiseaseRecognition.utils.common import save_json
 
 
 class Evaluation:

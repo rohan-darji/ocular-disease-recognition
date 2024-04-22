@@ -1,6 +1,6 @@
-from src.ocularDiseaseRecognition.config.configuration import ConfigurationManager
-from src.ocularDiseaseRecognition.components.evaluation import Evaluation
-from src.ocularDiseaseRecognition import logger
+from ocularDiseaseRecognition.config.configuration import ConfigurationManager
+from ocularDiseaseRecognition.components.evaluation import Evaluation
+from ocularDiseaseRecognition import logger
 
 
 STAGE_NAME = "Evaluation stage"

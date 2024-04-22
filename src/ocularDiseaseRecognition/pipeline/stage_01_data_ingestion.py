@@ -1,6 +1,6 @@
-from src.ocularDiseaseRecognition.config.configuration import ConfigurationManager
-from src.ocularDiseaseRecognition.components.data_ingestion import DataIngestion
-from src.ocularDiseaseRecognition import logger
+from ocularDiseaseRecognition.config.configuration import ConfigurationManager
+from ocularDiseaseRecognition.components.data_ingestion import DataIngestion
+from ocularDiseaseRecognition import logger
 
 STAGE_NAME = "Data Ingestion Stage"
 

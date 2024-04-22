@@ -1,8 +1,8 @@
-from src.ocularDiseaseRecognition.constants import *
+from ocularDiseaseRecognition.constants import *
 import os
 from pathlib import Path
-from src.ocularDiseaseRecognition.utils.common import read_yaml, create_directories
-from src.ocularDiseaseRecognition.entity.config_entity import (DataIngestionConfig, 
+from ocularDiseaseRecognition.utils.common import read_yaml, create_directories
+from ocularDiseaseRecognition.entity.config_entity import (DataIngestionConfig, 
                                                                PrepareBaseModelConfig, 
                                                                PrepareCallbacksConfig, 
                                                                TrainingConfig,
@@ -72,7 +72,7 @@ class ConfigurationManager:
         training = self.config.training
         prepare_base_model = self.config.prepare_base_model
         params = self.params
-        training_data = os.path.join(self.config.data_ingestion.unzip_dir)
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "ocular_disease_recognition_ODIR_5K")
         create_directories([
             Path(training.root_dir)
         ])
@@ -95,7 +95,7 @@ class ConfigurationManager:
     def get_validation_config(self) -> EvaluationConfig:
         eval_config = EvaluationConfig(
             path_of_model=Path("artifacts/training/model.h5"),
-            training_data=Path("artifacts/data_ingestion/ocular-disease-recognition-dataset/ocular_disease_recognition_ODIR_5K"),
+            training_data=Path("artifacts/data_ingestion/ocular_disease_recognition_ODIR_5K"),
             all_params=self.params,
             params_image_size=self.params.IMAGE_SIZE,
             params_batch_size=self.params.BATCH_SIZE

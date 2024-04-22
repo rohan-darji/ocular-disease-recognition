@@ -1,7 +1,7 @@
-from src.ocularDiseaseRecognition.config.configuration import ConfigurationManager
-from src.ocularDiseaseRecognition.components.prepare_callbacks import PrepareCallback
-from src.ocularDiseaseRecognition.components.training import Training
-from src.ocularDiseaseRecognition import logger
+from ocularDiseaseRecognition.config.configuration import ConfigurationManager
+from ocularDiseaseRecognition.components.prepare_callbacks import PrepareCallback
+from ocularDiseaseRecognition.components.training import Training
+from ocularDiseaseRecognition import logger
 
 STAGE_NAME = "Training"
 

@@ -1,12 +1,12 @@
 import os
 import urllib.request as request
 import zipfile
-from src.ocularDiseaseRecognition import logger
-from src.ocularDiseaseRecognition.utils.common import get_size
+from ocularDiseaseRecognition import logger
+from ocularDiseaseRecognition.utils.common import get_size
 import time
 from requests.exceptions import Timeout
 import subprocess
-from src.ocularDiseaseRecognition.entity.config_entity import DataIngestionConfig
+from ocularDiseaseRecognition.entity.config_entity import DataIngestionConfig
 
 
 class DataIngestion:
