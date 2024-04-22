@@ -5,7 +5,7 @@ stages:
       - src/ocularDiseaseRecognition/pipeline/stage_01_data_ingestion.py
       - config/config.yaml
     outs:
-      - artifacts/data_ingestion/ocular-disease-recognition-dataset/ocular_disease_recognition_ODIR_5K
+      - artifacts/data_ingestion/ocular_disease_recognition_ODIR_5K
 
 
 
@@ -31,7 +31,7 @@ stages:
       - src/ocularDiseaseRecognition/pipeline/stage_03_training.py
       - src/ocularDiseaseRecognition/components/prepare_callbacks.py
       - config/config.yaml
-      - artifacts/data_ingestion/ocular-disease-recognition-dataset/ocular_disease_recognition_ODIR_5K
+      - artifacts/data_ingestion/ocular_disease_recognition_ODIR_5K
       - artifacts/prepare_base_model
     params:
       - IMAGE_SIZE
@@ -48,7 +48,7 @@ stages:
     deps:
       - src/ocularDiseaseRecognition/pipeline/stage_04_evaluation.py
       - config/config.yaml
-      - artifacts/data_ingestion/ocular-disease-recognition-dataset/ocular_disease_recognition_ODIR_5K
+      - artifacts/data_ingestion/ocular_disease_recognition_ODIR_5K
       - artifacts/training/model.h5
     params:
       - IMAGE_SIZE

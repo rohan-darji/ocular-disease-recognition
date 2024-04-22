@@ -5,15 +5,14 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: 77255a95699c71892fa8d8c108be3721
-      size: 870
+      md5: 160e6cb06c564c4de9fbe92bf1f0f34f
+      size: 800
     - path: src/ocularDiseaseRecognition/pipeline/stage_01_data_ingestion.py
       hash: md5
       md5: 67b130ebcf224533555d1b3c3b2cd19a
       size: 935
     outs:
-    - path: 
-        artifacts/data_ingestion/ocular-disease-recognition-dataset/ocular_disease_recognition_ODIR_5K/ocular_disease_recognition_ODIR_5K
+    - path: artifacts/data_ingestion/ocular_disease_recognition_ODIR_5K
       hash: md5
       md5: 3088abf26c9331d9bf60a11b49074b3d.dir
       size: 14231635
@@ -23,8 +22,8 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: 77255a95699c71892fa8d8c108be3721
-      size: 870
+      md5: 160e6cb06c564c4de9fbe92bf1f0f34f
+      size: 800
     - path: src/ocularDiseaseRecognition/pipeline/stage_02_prepare_base_model.py
       hash: md5
       md5: 3fbc6a21087f92567bd6c499ac1ce548
@@ -42,6 +41,77 @@ stages:
     outs:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: 7ab8944c25f70f8972f3dd46d011f338.dir
+      md5: b354ba60b4cd262d3d69631376d236f3.dir
       size: 160535624
       nfiles: 2
+  training:
+    cmd: python src/ocularDiseaseRecognition/pipeline/stage_03_training.py
+    deps:
+    - path: artifacts/data_ingestion/ocular_disease_recognition_ODIR_5K
+      hash: md5
+      md5: 3088abf26c9331d9bf60a11b49074b3d.dir
+      size: 14231635
+      nfiles: 1088
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: b354ba60b4cd262d3d69631376d236f3.dir
+      size: 160535624
+      nfiles: 2
+    - path: config/config.yaml
+      hash: md5
+      md5: 160e6cb06c564c4de9fbe92bf1f0f34f
+      size: 800
+    - path: src/ocularDiseaseRecognition/components/prepare_callbacks.py
+      hash: md5
+      md5: f251da76526606d744c45c7a487f2e28
+      size: 1022
+    - path: src/ocularDiseaseRecognition/pipeline/stage_03_training.py
+      hash: md5
+      md5: 34354bc723251284ce0b9205ebee27bb
+      size: 1296
+    params:
+      params.yaml:
+        AUGMENTATION: false
+        BATCH_SIZE: 60
+        EPOCHS: 10
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: artifacts/training/model.h5
+      hash: md5
+      md5: a1991ef958523edb6a0232eb722b4dd8
+      size: 80378552
+  evaluation:
+    cmd: python src/ocularDiseaseRecognition/pipeline/stage_04_evaluation.py
+    deps:
+    - path: artifacts/data_ingestion/ocular_disease_recognition_ODIR_5K
+      hash: md5
+      md5: 3088abf26c9331d9bf60a11b49074b3d.dir
+      size: 14231635
+      nfiles: 1088
+    - path: artifacts/training/model.h5
+      hash: md5
+      md5: a1991ef958523edb6a0232eb722b4dd8
+      size: 80378552
+    - path: config/config.yaml
+      hash: md5
+      md5: 160e6cb06c564c4de9fbe92bf1f0f34f
+      size: 800
+    - path: src/ocularDiseaseRecognition/pipeline/stage_04_evaluation.py
+      hash: md5
+      md5: 3718c01dc662bd30a148f10e6bbea0ad
+      size: 898
+    params:
+      params.yaml:
+        BATCH_SIZE: 60
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: scores.json
+      hash: md5
+      md5: ac9f9df62a93b266482ef66ad6a70d60
+      size: 73
