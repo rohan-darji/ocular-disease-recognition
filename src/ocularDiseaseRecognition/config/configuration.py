@@ -1,7 +1,12 @@
 from src.ocularDiseaseRecognition.constants import *
 import os
+from pathlib import Path
 from src.ocularDiseaseRecognition.utils.common import read_yaml, create_directories
-from src.ocularDiseaseRecognition.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbacksConfig, TrainingConfig)
+from src.ocularDiseaseRecognition.entity.config_entity import (DataIngestionConfig, 
+                                                               PrepareBaseModelConfig, 
+                                                               PrepareCallbacksConfig, 
+                                                               TrainingConfig,
+                                                               EvaluationConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -85,3 +90,14 @@ class ConfigurationManager:
         )
 
         return training_config
+
+
+    def get_validation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model=Path("artifacts/training/model.h5"),
+            training_data=Path("artifacts/data_ingestion/ocular-disease-recognition-dataset/ocular_disease_recognition_ODIR_5K"),
+            all_params=self.params,
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+        return eval_config
